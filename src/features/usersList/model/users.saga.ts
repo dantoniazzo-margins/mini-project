@@ -1,6 +1,8 @@
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
-import axios, { AxiosResponse } from 'axios';
-import { setUsers, setFailure } from './allUsers.reducer';
+import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
+import { AxiosResponse } from "axios";
+import { setUsers, setFailure } from "./allUsers.reducer";
+import { useGet } from "@/app/config/api/useCrud";
+import { IUser } from "@/entities/user/model/interfaces/user";
 
 interface axiosProps {
   url: string;
@@ -8,20 +10,12 @@ interface axiosProps {
   data?: string;
 }
 
-let callAPI = async ({ url, method, data }: axiosProps) => {
-  return await axios({
-    url,
-    method,
-    data,
-  });
-};
-
 export function* fetchUsers() {
   try {
-    const result: AxiosResponse<any> = yield call(() =>
-      callAPI({ url: 'https://jsonplaceholder.typicode.com/users' })
+    const result: AxiosResponse<IUser> = yield call(() =>
+      useGet("https://jsonplaceholder.typicode.com/users")
     );
-    yield put(setUsers(result));
+    yield put(setUsers(result.data));
   } catch (e: any) {
     yield put(setFailure(e.message));
     /*  yield put({ type: "TODO_FETCH_FAILED" }); */
@@ -29,5 +23,5 @@ export function* fetchUsers() {
 }
 
 export function* watchFetchUsers() {
-  yield takeEvery('FETCH_USERS', fetchUsers);
+  yield takeEvery("FETCH_USERS", fetchUsers);
 }

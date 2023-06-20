@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { IUser } from "@/entities/user/model/interfaces/user";
 
 interface usersProps {
-  allUsers: string;
+  allUsers: IUser[];
   failureMessage: string;
 }
 const initialState = {} as usersProps;

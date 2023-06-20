@@ -1,17 +1,17 @@
 import { useHttpAdapter } from "./useHttpAdapter";
 
-const useGet = (url: string) => {
-  return useHttpAdapter().get(url);
+const useGet = async (url: string) => {
+  return await useHttpAdapter().get(url);
 };
 
-const usePost = (url: string, body: any) => {
-  return useHttpAdapter().post(url, body);
+const usePost = async (url: string, body: any) => {
+  return await useHttpAdapter().post(url, body);
 };
-const usePatch = (url: string, body: any) => {
-  return useHttpAdapter().patch(url, body);
+const usePatch = async (url: string, body: any) => {
+  return await useHttpAdapter().patch(url, body);
 };
-const useDelete = (url: string) => {
-  return useHttpAdapter().delete(url);
+const useDelete = async (url: string) => {
+  return await useHttpAdapter().delete(url);
 };
 
 export { useGet, usePost, usePatch, useDelete };

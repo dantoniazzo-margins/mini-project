@@ -1,10 +1,15 @@
 export interface IUser {
-  firstName: string;
-  lastName: string;
+  id: number;
+  name: string;
   email: string;
-  isEmailConfirmed: boolean;
-  photo: string;
-  dateOfBirth?: Date;
-  phoneNumber?: number;
   address: string;
+  phone: string;
+  website: string;
+  company: Company;
+}
+
+export interface Company {
+  name: string;
+  catchphrase: string;
+  bs: string;
 }
