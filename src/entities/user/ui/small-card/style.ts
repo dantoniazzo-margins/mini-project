@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SmallCard = styled.div`
+export const SmallCardContainer = styled.div`
   width: 200px;
   height: 100px;
   background-color: darkgray;

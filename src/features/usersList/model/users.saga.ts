@@ -12,8 +12,9 @@ interface axiosProps {
 
 export function* fetchUsers() {
   try {
-    const result: AxiosResponse<IUser> = yield call(() =>
-      useGet("https://jsonplaceholder.typicode.com/users")
+    const result: AxiosResponse<IUser> = yield call(
+      useGet,
+      "https://jsonplaceholder.typicode.com/users"
     );
     yield put(setUsers(result.data));
   } catch (e: any) {

@@ -1,18 +1,18 @@
 import React from "react";
-import { SmallCard } from "./style";
+import { SmallCardContainer } from "./style";
 import { IUser } from "../../model/interfaces/user";
 
 interface Props {
   user: IUser;
 }
-const index = (props: Props) => {
+const SmallCard = (props: Props) => {
   return (
-    <SmallCard>
+    <SmallCardContainer>
       <h3>{props.user.name}</h3>
       <h4>{props.user.company.name}</h4>
       <h5>{props.user.email}</h5>
-    </SmallCard>
+    </SmallCardContainer>
   );
 };
 
-export default index;
+export default SmallCard;
